@@ -20,7 +20,7 @@ namespace Circuitos
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-
+            int adios = 0;
         }
     }
 }
