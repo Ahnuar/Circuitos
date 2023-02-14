@@ -1,0 +1,11 @@
+C:\Users\Ahnua\OneDrive\Documentos\DAM\C#\5uf\Circuitos\Circuitos\bin\Debug\Circuitos.exe.config
+C:\Users\Ahnua\OneDrive\Documentos\DAM\C#\5uf\Circuitos\Circuitos\bin\Debug\Circuitos.exe
+C:\Users\Ahnua\OneDrive\Documentos\DAM\C#\5uf\Circuitos\Circuitos\bin\Debug\Circuitos.pdb
+C:\Users\Ahnua\OneDrive\Documentos\DAM\C#\5uf\Circuitos\Circuitos\obj\Debug\Circuitos.csproj.AssemblyReference.cache
+C:\Users\Ahnua\OneDrive\Documentos\DAM\C#\5uf\Circuitos\Circuitos\obj\Debug\Circuitos.csproj.SuggestedBindingRedirects.cache
+C:\Users\Ahnua\OneDrive\Documentos\DAM\C#\5uf\Circuitos\Circuitos\obj\Debug\Circuitos.Form1.resources
+C:\Users\Ahnua\OneDrive\Documentos\DAM\C#\5uf\Circuitos\Circuitos\obj\Debug\Circuitos.Properties.Resources.resources
+C:\Users\Ahnua\OneDrive\Documentos\DAM\C#\5uf\Circuitos\Circuitos\obj\Debug\Circuitos.csproj.GenerateResource.cache
+C:\Users\Ahnua\OneDrive\Documentos\DAM\C#\5uf\Circuitos\Circuitos\obj\Debug\Circuitos.csproj.CoreCompileInputs.cache
+C:\Users\Ahnua\OneDrive\Documentos\DAM\C#\5uf\Circuitos\Circuitos\obj\Debug\Circuitos.exe
+C:\Users\Ahnua\OneDrive\Documentos\DAM\C#\5uf\Circuitos\Circuitos\obj\Debug\Circuitos.pdb

@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="bdCircuitosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Circuitos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Coordenadas" Type="varchar" MaxLength="128" />
+          <Property Name="UrlWiki" Type="varchar" MaxLength="128" />
+          <Property Name="UrlCircuito" Type="varchar" MaxLength="128" />
+          <Property Name="Inauguracion" Type="datetime" />
+          <Property Name="IdLocalidad" Type="int" />
+        </EntityType>
+        <EntityType Name="Continentes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fotos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="codigo" Type="varchar(max)" />
+          <Property Name="idCircuitos" Type="int" />
+        </EntityType>
+        <EntityType Name="Localidades">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="idPais" Type="int" />
+        </EntityType>
+        <EntityType Name="Paises">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="idContinente" Type="int" />
+        </EntityType>
+        <Association Name="FK__Circuitos__IdLoc__2C3393D0">
+          <End Role="Localidades" Type="Self.Localidades" Multiplicity="0..1" />
+          <End Role="Circuitos" Type="Self.Circuitos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localidades">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Circuitos">
+              <PropertyRef Name="IdLocalidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Fotos__idCircuit__2F10007B">
+          <End Role="Circuitos" Type="Self.Circuitos" Multiplicity="0..1" />
+          <End Role="Fotos" Type="Self.Fotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Circuitos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Fotos">
+              <PropertyRef Name="idCircuitos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Localidad__idPai__29572725">
+          <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
+          <End Role="Localidades" Type="Self.Localidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Localidades">
+              <PropertyRef Name="idPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Paises__idContin__267ABA7A">
+          <End Role="Continentes" Type="Self.Continentes" Multiplicity="0..1" />
+          <End Role="Paises" Type="Self.Paises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Continentes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Paises">
+              <PropertyRef Name="idContinente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bdCircuitosModelStoreContainer">
+          <EntitySet Name="Circuitos" EntityType="Self.Circuitos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Continentes" EntityType="Self.Continentes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fotos" EntityType="Self.Fotos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Localidades" EntityType="Self.Localidades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Circuitos__IdLoc__2C3393D0" Association="Self.FK__Circuitos__IdLoc__2C3393D0">
+            <End Role="Localidades" EntitySet="Localidades" />
+            <End Role="Circuitos" EntitySet="Circuitos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Fotos__idCircuit__2F10007B" Association="Self.FK__Fotos__idCircuit__2F10007B">
+            <End Role="Circuitos" EntitySet="Circuitos" />
+            <End Role="Fotos" EntitySet="Fotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Localidad__idPai__29572725" Association="Self.FK__Localidad__idPai__29572725">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Localidades" EntitySet="Localidades" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Paises__idContin__267ABA7A" Association="Self.FK__Paises__idContin__267ABA7A">
+            <End Role="Continentes" EntitySet="Continentes" />
+            <End Role="Paises" EntitySet="Paises" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bdCircuitosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Circuitos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Coordenadas" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="UrlWiki" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="UrlCircuito" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Inauguracion" Type="DateTime" Precision="3" />
+          <Property Name="IdLocalidad" Type="Int32" />
+          <NavigationProperty Name="Localidades" Relationship="Self.FK__Circuitos__IdLoc__2C3393D0" FromRole="Circuitos" ToRole="Localidades" />
+          <NavigationProperty Name="Fotos" Relationship="Self.FK__Fotos__idCircuit__2F10007B" FromRole="Circuitos" ToRole="Fotos" />
+        </EntityType>
+        <EntityType Name="Continentes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Paises" Relationship="Self.FK__Paises__idContin__267ABA7A" FromRole="Continentes" ToRole="Paises" />
+        </EntityType>
+        <EntityType Name="Fotos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="codigo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="idCircuitos" Type="Int32" />
+          <NavigationProperty Name="Circuitos" Relationship="Self.FK__Fotos__idCircuit__2F10007B" FromRole="Fotos" ToRole="Circuitos" />
+        </EntityType>
+        <EntityType Name="Localidades">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idPais" Type="Int32" />
+          <NavigationProperty Name="Circuitos" Relationship="Self.FK__Circuitos__IdLoc__2C3393D0" FromRole="Localidades" ToRole="Circuitos" />
+          <NavigationProperty Name="Paises" Relationship="Self.FK__Localidad__idPai__29572725" FromRole="Localidades" ToRole="Paises" />
+        </EntityType>
+        <EntityType Name="Paises">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idContinente" Type="Int32" />
+          <NavigationProperty Name="Continentes" Relationship="Self.FK__Paises__idContin__267ABA7A" FromRole="Paises" ToRole="Continentes" />
+          <NavigationProperty Name="Localidades" Relationship="Self.FK__Localidad__idPai__29572725" FromRole="Paises" ToRole="Localidades" />
+        </EntityType>
+        <Association Name="FK__Circuitos__IdLoc__2C3393D0">
+          <End Role="Localidades" Type="Self.Localidades" Multiplicity="0..1" />
+          <End Role="Circuitos" Type="Self.Circuitos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localidades">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Circuitos">
+              <PropertyRef Name="IdLocalidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Fotos__idCircuit__2F10007B">
+          <End Role="Circuitos" Type="Self.Circuitos" Multiplicity="0..1" />
+          <End Role="Fotos" Type="Self.Fotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Circuitos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Fotos">
+              <PropertyRef Name="idCircuitos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Paises__idContin__267ABA7A">
+          <End Role="Continentes" Type="Self.Continentes" Multiplicity="0..1" />
+          <End Role="Paises" Type="Self.Paises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Continentes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Paises">
+              <PropertyRef Name="idContinente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Localidad__idPai__29572725">
+          <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
+          <End Role="Localidades" Type="Self.Localidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Localidades">
+              <PropertyRef Name="idPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bdCircuitosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Circuitos" EntityType="Self.Circuitos" />
+          <EntitySet Name="Continentes" EntityType="Self.Continentes" />
+          <EntitySet Name="Fotos" EntityType="Self.Fotos" />
+          <EntitySet Name="Localidades" EntityType="Self.Localidades" />
+          <EntitySet Name="Paises" EntityType="Self.Paises" />
+          <AssociationSet Name="FK__Circuitos__IdLoc__2C3393D0" Association="Self.FK__Circuitos__IdLoc__2C3393D0">
+            <End Role="Localidades" EntitySet="Localidades" />
+            <End Role="Circuitos" EntitySet="Circuitos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Fotos__idCircuit__2F10007B" Association="Self.FK__Fotos__idCircuit__2F10007B">
+            <End Role="Circuitos" EntitySet="Circuitos" />
+            <End Role="Fotos" EntitySet="Fotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Paises__idContin__267ABA7A" Association="Self.FK__Paises__idContin__267ABA7A">
+            <End Role="Continentes" EntitySet="Continentes" />
+            <End Role="Paises" EntitySet="Paises" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Localidad__idPai__29572725" Association="Self.FK__Localidad__idPai__29572725">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Localidades" EntitySet="Localidades" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bdCircuitosModelStoreContainer" CdmEntityContainer="bdCircuitosEntities">
+          <EntitySetMapping Name="Circuitos">
+            <EntityTypeMapping TypeName="bdCircuitosModel.Circuitos">
+              <MappingFragment StoreEntitySet="Circuitos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Coordenadas" ColumnName="Coordenadas" />
+                <ScalarProperty Name="UrlWiki" ColumnName="UrlWiki" />
+                <ScalarProperty Name="UrlCircuito" ColumnName="UrlCircuito" />
+                <ScalarProperty Name="Inauguracion" ColumnName="Inauguracion" />
+                <ScalarProperty Name="IdLocalidad" ColumnName="IdLocalidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Continentes">
+            <EntityTypeMapping TypeName="bdCircuitosModel.Continentes">
+              <MappingFragment StoreEntitySet="Continentes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fotos">
+            <EntityTypeMapping TypeName="bdCircuitosModel.Fotos">
+              <MappingFragment StoreEntitySet="Fotos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="idCircuitos" ColumnName="idCircuitos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Localidades">
+            <EntityTypeMapping TypeName="bdCircuitosModel.Localidades">
+              <MappingFragment StoreEntitySet="Localidades">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="idPais" ColumnName="idPais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Paises">
+            <EntityTypeMapping TypeName="bdCircuitosModel.Paises">
+              <MappingFragment StoreEntitySet="Paises">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="idContinente" ColumnName="idContinente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
