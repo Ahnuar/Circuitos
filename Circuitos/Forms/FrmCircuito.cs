@@ -12,9 +12,15 @@ namespace Circuitos.Forms
 {
     public partial class FrmCircuito : Form
     {
+        int hola=1;
         public FrmCircuito()
         {
             InitializeComponent();
+        }
+
+        private void FrmCircuito_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
